@@ -1,20 +1,24 @@
 
 var cartoonArray = ["Bugs Bunny", "Daffy Duck", "Animaniacs", "Scooby Doo"];
 
-var cartoonChar = cartoonArray[0];
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cartoonChar + "&api_key=cHxD8VJ2oLDyoYjoZMvpLblY4LTo6SJF&limit=10";
+function displayCartoonGifs() {
 
+    var cartoonChar = $(this).attr("data-name");
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cartoonChar + "&api_key=cHxD8VJ2oLDyoYjoZMvpLblY4LTo6SJF&limit=10";
 
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+        // console.log(response.data.images.original.url);
+        // console.log(response.data[0].images.original_still.url)
+        // console.log(response.data[0].rating)
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
-    console.log(response.data[0].images.original.url);
-    console.log(response.data[0].images.original_still.url)
-    console.log(response.data[0].rating)
-});
+        // use figure tags to display gif and rating
+    });
+
+};
 
 function addButtons() {
     $("#button-list").empty();
@@ -34,6 +38,7 @@ $("#add-cartoon").on("click", function(event) {
     addButtons();
 });
 
+$(document).on("click", "cartoon-btn", displayCartoonGifs);
 
 addButtons();
 
