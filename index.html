@@ -4,9 +4,36 @@
     <head>
         <meta charset="utf-8">
         <title>Giphy Search</title>
+
+        <!-- <link type="text/css" rel="stylesheet" href="assets/css/reset.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
     </head>
 
     <body>
+
+        <div class="container">
+
+            <h1>Cartoon Gifs Search</h1>
+
+            <div id="button-list"></div>
+
+            <form id="cartoon-form">
+
+                <label for="cartoon-input">Add a cartoon character to the list!</label>
+                <input type="text" id="cartoon-input">
+                <br />
+                <input type="submit" id="add-cartoon" value="Add Cartoon">
+
+            </form>
+
+            <div id="cartoon-view"></div>
+
+        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/javascript/app.js"></script>
