@@ -9,9 +9,19 @@ function displayCartoonGifs() {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
-        // console.log(response.data.images.original.url);
+        console.log(response.data[0].images.original.url);
+        $("#cartoon-view").empty();
+        for (var i = 0; i < 10; i++) {
+            $(`
+                <figure>
+                    <img src="${response.data[i].images.fixed_height_still.url}">
+                    <figcaption>Rating: ${response.data[i].rating}</figcaption>
+                </figure>
+            `).appendTo("#cartoon-view");
+        };
+
         // console.log(response.data[0].images.original_still.url)
         // console.log(response.data[0].rating)
 
@@ -31,14 +41,16 @@ function addButtons() {
     }
 }
 
-$("#add-cartoon").on("click", function(event) {
+$("#add-cartoon").on("click", function (event) {
     event.preventDefault();
     var userCartoon = $("#cartoon-input").val().trim();
     cartoonArray.push(userCartoon);
     addButtons();
 });
 
-$(document).on("click", "cartoon-btn", displayCartoonGifs);
-
 addButtons();
+
+$(document).on("click", ".cartoon-btn", displayCartoonGifs);
+
+
 
