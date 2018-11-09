@@ -1,5 +1,23 @@
-body {
-    width: 960px;
+body {    
+    background-image: url("../images/brick-wall.jpg");
+    color: rgb(86, 252, 210);
+    font-size: 16pt;
+    font-weight: bold;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+        1px 1px 0 #000;
+    width: 960px;    
+}
+
+hr {
+    /* width: 300px; */
+    margin-left: auto;
+    margin-right: auto;
+    height: 5px;
+    background-color:rgb(123, 203, 250);
+    opcaity: 0.5;
 }
 
 .cartoon-btn {
