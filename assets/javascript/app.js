@@ -8,21 +8,21 @@ var cartoonArray = [
     "Darkwing Duck",
     "Felix The Cat",
     "The Simpsons",
-    "South Park",
     "Transformers"
 ];
 
 function displayCartoonGifs() {
 
+    var numOfGifs = $("#number-of-gifs").val();
     var cartoonChar = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cartoonChar + "&api_key=cHxD8VJ2oLDyoYjoZMvpLblY4LTo6SJF&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cartoonChar + "&api_key=cHxD8VJ2oLDyoYjoZMvpLblY4LTo6SJF&limit=" + numOfGifs;
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         $("#cartoon-view").empty();
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < numOfGifs; i++) {
             $(`
                 <figure class="cartoon-image">
                     <img src="${response.data[i].images.fixed_height_still.url}">
@@ -57,6 +57,14 @@ function addButtons() {
     }
 };
 
+function addCartoonCount() {
+    var select = '';
+    for (i=5;i<=25;i++){
+        select += '<option val=' + i + '>' + i + '</option>';
+    }
+    $('#number-of-gifs').html(select);
+};
+
 $("#add-cartoon").on("click", function (event) {
     event.preventDefault();
     var userCartoon = $("#cartoon-input").val().trim();
@@ -66,6 +74,8 @@ $("#add-cartoon").on("click", function (event) {
 });
 
 addButtons();
+
+addCartoonCount();
 
 $(document).on("click", ".cartoon-btn", displayCartoonGifs);
 
