@@ -15,7 +15,7 @@ var cartoonArray = [
 function displayCartoonGifs() {
 
     var cartoonChar = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cartoonChar + "&api_key=cHxD8VJ2oLDyoYjoZMvpLblY4LTo6SJF&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cartoonChar + "&api_key=cHxD8VJ2oLDyoYjoZMvpLblY4LTo6SJF&limit=10";
 
     $.ajax({
         url: queryURL,
