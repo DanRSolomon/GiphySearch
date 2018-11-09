@@ -1,4 +1,16 @@
-var cartoonArray = ["Bugs Bunny", "Daffy Duck", "Animaniacs", "Scooby Doo"];
+var cartoonArray = [
+    "Bugs Bunny",
+    "Daffy Duck",
+    "Animaniacs",
+    "Scooby Doo",
+    "Voltron",
+    "Snoopy",
+    "Darkwing Duck",
+    "Felix The Cat",
+    "The Simpsons",
+    "South Park",
+    "Transformers"
+];
 
 function displayCartoonGifs() {
 
@@ -50,6 +62,7 @@ $("#add-cartoon").on("click", function (event) {
     var userCartoon = $("#cartoon-input").val().trim();
     cartoonArray.push(userCartoon);
     addButtons();
+    document.getElementById('cartoon-input').value=null;
 });
 
 addButtons();

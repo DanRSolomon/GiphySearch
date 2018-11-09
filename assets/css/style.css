@@ -1,4 +1,10 @@
+body {
+    width: 960px;
+}
 
+.cartoon-btn {
+    margin: 5px 5px 5px 0px;
+}
 
 #cartoon-view {
     display: flex;
