@@ -1,4 +1,3 @@
-
 var cartoonArray = ["Bugs Bunny", "Daffy Duck", "Animaniacs", "Scooby Doo"];
 
 function displayCartoonGifs() {
@@ -10,24 +9,29 @@ function displayCartoonGifs() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
-        console.log(response.data[0].images.original.url);
         $("#cartoon-view").empty();
         for (var i = 0; i < 10; i++) {
             $(`
-                <figure>
+                <figure class="cartoon-image">
                     <img src="${response.data[i].images.fixed_height_still.url}">
                     <figcaption>Rating: ${response.data[i].rating}</figcaption>
                 </figure>
             `).appendTo("#cartoon-view");
         };
-
-        // console.log(response.data[0].images.original_still.url)
-        // console.log(response.data[0].rating)
-
-        // use figure tags to display gif and rating
     });
+};
 
+var staticGifSuffix = "_s.gif";
+var animatedGifSuffix = ".gif";
+
+function animateCartoon() {
+    var animate = $(this).find("img").attr("src");
+    var checkIfStatic = animate.split('/')[5];
+    if (checkIfStatic === "200_s.gif") {
+        $(this).find("img").attr("src", animate.replace(staticGifSuffix, animatedGifSuffix));
+    } else {
+        $(this).find("img").attr("src", animate.replace(animatedGifSuffix, staticGifSuffix));
+    };
 };
 
 function addButtons() {
@@ -39,7 +43,7 @@ function addButtons() {
         newButton.text(cartoonArray[i]);
         $("#button-list").append(newButton);
     }
-}
+};
 
 $("#add-cartoon").on("click", function (event) {
     event.preventDefault();
@@ -52,5 +56,5 @@ addButtons();
 
 $(document).on("click", ".cartoon-btn", displayCartoonGifs);
 
-
+$(document).on("click", ".cartoon-image", animateCartoon);
 
